@@ -1,8 +1,6 @@
 '''
 Siddhartha Pant
-CS 5001 Spring 2020
-Final Project
-April 8, 2020
+Connect4
 '''
 
 
@@ -46,12 +44,10 @@ class Connect4GameSetup():
         Returns: screen
         '''
 
-        # declaring a turtle object and setting screen size and background color
         screen = turtle.Screen()
         screen.screensize(750, 750)
         screen.bgcolor("light grey")
 
-        # updates the class attribute
         self.screen = screen
 
         return screen
@@ -67,11 +63,9 @@ class Connect4GameSetup():
         '''
 
         DISC_SPACING = 50
-
-        # declare a turtle object
+        
         title = turtle.Turtle()
 
-        # write the title of the game
         title.color("black")
         style = ('PT Sans', 50, 'bold')
         title.hideturtle()
@@ -83,13 +77,11 @@ class Connect4GameSetup():
         title.goto(220, 260)
         title.write('Result:', align='center', font=('PT Sans', 20, 'underline'))
 
-        # seek user input for row and column dimensions
         row_dim = int(self.screen.numinput("Row Dimension",
                 "Enter your Row Dimension:", 6, minval=4, maxval=8))
         col_dim = int(self.screen.numinput("Column Dimension",
                 "Enter your Col Dimension:", 7, minval=4, maxval=10))
-
-        # create the game board as a rectangle
+        
         game_board = turtle.Turtle()
         game_board.hideturtle()
         game_board.speed(0)
@@ -98,32 +90,26 @@ class Connect4GameSetup():
         game_board.goto(-300, 225)
         game_board.pendown()
 
-        # dimensions of the game board set at 10 units higher than grid size
         width = row_dim * (DISC_SPACING + 10)
         length = col_dim * (DISC_SPACING + 10)
 
         game_board.fillcolor("blue")
         game_board.begin_fill()
 
-        # drawing first side
         game_board.forward(length)
         game_board.right(90)
 
-        # drawing second side
         game_board.forward(width)
         game_board.right(90)
 
-        # drawing third side
         game_board.forward(length)
         game_board.right(90)
 
-        # drawing fourth side
         game_board.forward(width)
         game_board.right(90)
 
         game_board.end_fill()
 
-        # updates the class attribute
         self.row_dimension = row_dim
         self.col_dimension = col_dim
 
@@ -141,7 +127,6 @@ class Connect4GameSetup():
                             "Human vs Human(H) or Human vs Computer (C)")
         human_or_computer = human_or_computer.upper()
 
-        # reprompts user until valid input is provided
         while human_or_computer != 'H' and human_or_computer != 'C':
             human_or_computer = self.screen.textinput(
                                 "Invalid input. Choose the mode of the game",
@@ -160,8 +145,7 @@ class Connect4GameSetup():
         '''
 
         EMPTY_DISC = 0
-
-        # use list comprehensions to set up the game board with empty discs
+        
         matrix = [[EMPTY_DISC for col in range(self.col_dimension)]
                   for row in range(self.row_dimension)]
         return matrix
