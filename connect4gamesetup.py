@@ -3,10 +3,7 @@ Siddhartha Pant
 Connect4
 '''
 
-
-
 import turtle
-
 
 class Connect4GameSetup():
     '''
