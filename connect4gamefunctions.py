@@ -87,25 +87,29 @@ class Connect4GameFunctions:
         # checking for a horizontal streak of 4 consecutive same colored discs
         for column in range(self.col_dim - 3):
             for row in range(self.row_dim):
-                if self.board[row][column] == disc and self.board[row][column + 1] == disc and self.board[row][column + 2] == disc and self.board[row][column + 3] == disc:
+                if self.board[row][column] == disc and self.board[row][column + 1] == disc and self.board[row][column + 2] == 
+                disc and self.board[row][column + 3] == disc:
                     return True
 
          # checking for a horizontal streak of 4 consecutive same colored discs
         for column in range(self.col_dim):
             for row in range(self.row_dim - 3):
-                if self.board[row][column] == disc and self.board[row + 1][column] == disc and self.board[row + 2][column] == disc and self.board[row + 3][column] == disc:
+                if self.board[row][column] == disc and self.board[row + 1][column] == disc and self.board[row + 2][column] == 
+                disc and self.board[row + 3][column] == disc:
                     return True
 
         # checking for diagonal streak in the 'right' direction
         for column in range(self.col_dim - 3):
             for row in range(self.row_dim - 3):
-                if self.board[row][column] == disc and self.board[row + 1][column + 1] == disc and self.board[row + 2][column + 2] == disc and self.board[row + 3][column + 3] == disc:
+                if self.board[row][column] == disc and self.board[row + 1][column + 1] == disc and self.board[row + 2][column + 2] == 
+                disc and self.board[row + 3][column + 3] == disc:
                     return True
 
         # checking for diagonal streak in the 'left' direction 
         for column in range(self.col_dim - 3):
             for row in range(3, self.row_dim):
-                if self.board[row][column] == disc and self.board[row - 1][column + 1] == disc and self.board[row - 2][column + 2] == disc and self.board[row - 3][column + 3] == disc:
+                if self.board[row][column] == disc and self.board[row - 1][column + 1] == disc and self.board[row - 2][column + 2] == 
+                disc and self.board[row - 3][column + 3] == disc:
                     return True
 
         # if no winning trends found, return False
