@@ -23,7 +23,7 @@ Connect4Display Class:
 This class implements the display functions of the program, including the display of the game grid, outcome of the game, current 
 win count for each players and the option for the user to close the turtle screen upon clicking.
 
-Driver 
+Driver: 
 The main method declares an object from the Connect4GameSetup class and first calls the method to initialise the screen. Then the 
 board is setup based on user input for row and column dimension. After that the method for game mode is called to seek user input 
 regarding where the user wants to play Human vs Human or Human vs Computer. The screen, row dimension, column dimension and player 
