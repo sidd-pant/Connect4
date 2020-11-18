@@ -1,8 +1,6 @@
 '''
 Siddhartha Pant
-CS 5001 Spring 2020
-Final Project
-April 8, 2020
+Connect4
 '''
 
 import turtle
@@ -50,22 +48,22 @@ class Connect4Display:
         YELLOW_DISC = 1
         RED_DISC = 2
 
-        # reverse the board list as the connect 4 game drops discs bottom-up
+        
         flip_board = [element for element in reversed(self.board)]
 
-        # declare a turtle object
+     
         disc = turtle.Turtle()
         disc.hideturtle()
 
-        # set speed to highest to draw as quickly as possible
+      
         disc.speed(0)
 
-        # set orientation of the turtle object
+        
         disc.setheading(0)
         disc.penup()
         disc.goto(-250, 170)
 
-        # use nested for loop to draw grid structure across rows and columns
+       
         for row in range(0, self.row_dim):
             for col in range(0, self.col_dim):
                 if flip_board[row][col] == 0:
@@ -80,18 +78,15 @@ class Connect4Display:
                 disc.end_fill()
 
                 disc.penup()
-
-                # move turtle object by fixed distance upon every draw
+                
                 disc.forward(DISC_SPACING)
 
-            # change orientation and move turtle to start drawing in a new line
             disc.setheading(270)
             disc.forward(DISC_SPACING)
             disc.setheading(180)
             disc.forward(DISC_SPACING * self.col_dim)
             disc.setheading(0)
-
-        # display column numbers to support user input
+            
         column_header = turtle.Turtle()
         column_header.hideturtle()
         column_header.penup()
@@ -111,15 +106,11 @@ class Connect4Display:
         Does: uses turtle to display the outcome of the game - winner or draw
         Returns: nothing
         '''
-
-        # declare a turtle object
         outcome = turtle.Turtle()
         outcome.hideturtle()
         outcome.penup()
         outcome.goto(220, 240)
 
-
-        # if player one wins, display Yellow as the winner
         if result == "yellow":
             outcome.color("black")
             outcome.write("YELLOW WINS", True, align="center",
@@ -127,7 +118,6 @@ class Connect4Display:
             outcome.pendown()
             outcome.getscreen().update()
 
-        # if player two wins, display Red as the winner
         if result == "red":
             outcome.color("black")
             outcome.write("RED WINS", True, align="center",
@@ -135,7 +125,6 @@ class Connect4Display:
             outcome.pendown()
             outcome.getscreen().update()
 
-        # if the match is drawn, display Draw as the outcome
         if result == "draw":
             outcome.penup()
             outcome.color("white")
@@ -153,20 +142,17 @@ class Connect4Display:
         Returns: nothing
         '''
 
-        #initialize turtle object
         count = turtle.Turtle()
         count.hideturtle()
         count.penup()
         count.color("black")
         count.goto(-35,-230)
 
-        # display win count for yellow
         count.write("Win Count Yellow:", True, align="center", font=("PT Sans", 20, "bold"))
         count.goto(-25,-250)
         count.write(current_score_yellow, True, align="center", font=("PT Sans", 20, "bold"))
         count.goto(-35,-280)
 
-        # display win count for red
         count.write("Win Count Red:", True, align="center", font=("PT Sans", 20, "bold"))
         count.goto(-25,-300)
         count.write(current_score_red, True, align="center", font=("PT Sans", 20, "bold"))
