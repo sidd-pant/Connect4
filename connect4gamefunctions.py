@@ -1,15 +1,10 @@
 '''
 Siddhartha Pant
-CS 5001 Spring 2020
-Final Project
-April 8, 2020
+Connect4
 '''
 
 import random
 import os
-
-
-
 
 class Connect4GameFunctions:
     
@@ -53,8 +48,7 @@ class Connect4GameFunctions:
         Does: positions the player's move correctly into the board list
         Returns: nothing
         '''
-
-        # update list element in the board list based on player's move
+        
         self.board[corresponding_row][user_input_col] = disc
 
 
@@ -65,8 +59,7 @@ class Connect4GameFunctions:
         Does: checks if the player's move is valid
         Returns: a boolean (True for valid move, False for invalid move)
         '''
-
-        # checking if the player's move corresponds to an empty disc
+        
         return self.board[self.row_dim - 1][user_input_col] == 0
 
     def find_next_open_row(self, user_input_col):
@@ -77,7 +70,6 @@ class Connect4GameFunctions:
         Returns: row (an integer, valid row index of the board list)
         '''
 
-        # iterating over the corresponding row elements to find open row
         for row in range(self.row_dim):
             if self.board[row][user_input_col] == 0:
                 return row
@@ -91,10 +83,7 @@ class Connect4GameFunctions:
         streak with 4 consecutive discs)
         Returns: boolean (True if the outcome is a win, False if it is not)
         '''
-
-        # signifies consecutive board items that must be tested along with disc
         
-
         # checking for a horizontal streak of 4 consecutive same colored discs
         for column in range(self.col_dim - 3):
             for row in range(self.row_dim):
@@ -132,17 +121,14 @@ class Connect4GameFunctions:
 
         count = 0
 
-        # iterating over the board list to count for filled disc spaces
         for column in range(self.col_dim):
             for row in range(self.row_dim):
                 if self.board[row][column] != 0:
                     count += 1
-
-        # if filled disc space is equal to total discs, declare draw
+                    
         if count == (self.row_dim * self.col_dim):
             return True
 
-        # otherwise, it is not a draw
         return False
 
     def computer_play(self):
@@ -152,17 +138,14 @@ class Connect4GameFunctions:
         Does: returns player's move for the computer in a Human vs Computer game
         Returns: computer's move
         '''
-
-        # computer selects random column to place its move
+        
         computer_input_col = random.randint(1, self.col_dim)
         computer_input_col -= 1
 
-        # if computer's selection is invalid, computer reselects
         while not self.valid_move(computer_input_col):
             computer_input_col = random.randint(1, self.col_dim)
             computer_input_col -= 1
-
-            # break the loop if the outcome is a draw
+            
             if self.draw_result() == True:
                 break
 
@@ -180,17 +163,13 @@ class Connect4GameFunctions:
 
         win_count = 0
 
-        # write the file with the number of wins to update
         if not os.path.exists(file):
             with open(file, "w") as num_wins:
                 num_wins.write(str(win_count))
-
-        # generate the number of times the user has won the game
+                
         try:
             with open(file, "r") as num_wins:
                 return num_wins.readline()
-
-        # if no records found, print 0 games solved
         except FileNotFoundError:
             print("\nYou have solved 0 puzzles till date")
 
@@ -201,18 +180,12 @@ class Connect4GameFunctions:
         Does: Updates the file with the total number of games won for each
         player by reading the file and then increasing the count. 
         '''
-    
-        # read the file as a string, convert to int and update as an int
         try:
             with open(file, "r") as update_file:
                 current_count = int(update_file.readline())
                 current_count += 1
-                
-            # ensure that the updated number is written to the file as a string
             with open(file, "w") as outfile:
                 outfile.write(str(current_count))
-                
-        # create an exception for if the file cannot be updated
         except IOError:
             print("Couldn't update  - must try again later")
 
