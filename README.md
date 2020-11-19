@@ -3,6 +3,7 @@ Connect4 Game in Python (GUI through Turtle)
 
 
 This program implements the Connect4 Game in python using the Turtle Library. Players can play Human vs Human or Human vs Computer.
+Supports a game board with customizable dimensions and keeps track of user scores between subsequent games.
 
 Connect4GameSetup Class:
 This class implements methods that set up the majority of the visual aspects of the game for the player (initialising the screen, 
