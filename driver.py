@@ -1,6 +1,6 @@
 '''
 Siddhartha Pant
-Connect4
+Connect4 : Driver File
 '''
 
 from connect4game import Connect4Game
@@ -21,4 +21,6 @@ if __name__ == "__main__":
     game = Connect4Game(screen,row_dimension,col_dimension,board,player_mode_choice)
     
     game.game_play()
+
+
 
